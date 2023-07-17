@@ -55,7 +55,7 @@ function OrderPay() {
           onSubmit: ({ selectedPaymentMethod, formData }) => {
             // callback llamado al hacer clic en el botón enviar datos
             return new Promise((resolve, reject) => {
-              fetch("http://localhost:3000", {
+              fetch("https://mercadopago-szea.onrender.com", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
