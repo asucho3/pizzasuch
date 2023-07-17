@@ -39,7 +39,6 @@ function OrderPay() {
         customization: {
           paymentMethods: {
             creditCard: "all",
-            debitCard: "all",
             minInstallments: 1,
             maxInstallments: 1,
           },
@@ -61,6 +60,7 @@ function OrderPay() {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData),
+                credentials: "include",
               })
                 .then((response) => response.json())
                 .then((response) => {
