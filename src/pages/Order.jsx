@@ -9,6 +9,7 @@ import { addOrder } from "../features/order/orderSlice";
 import Loader from "../ui/Loader";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../ui/ErrorMessage";
+import { useEffect, useState } from "react";
 
 function Order() {
   const cart = useSelector((state) => state.cart.cart);
@@ -18,6 +19,8 @@ function Order() {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
+  const [placeError, setPlaceError] = useState("");
+  const [place, setPlace] = useState({});
 
   const { mutate, isLoading } = useMutation({
     mutationFn: createOrder,
@@ -26,6 +29,89 @@ function Order() {
     },
     onError: (err) => toast.err(err.message),
   });
+
+  // Places API
+  function placeChanged(e) {
+    /* eslint-disable */
+    setPlace({});
+    setPlaceError("");
+    if (autocomplete?.getPlace()) {
+      for (const component of autocomplete.getPlace().address_components) {
+        console.log(component);
+        switch (component.types[0]) {
+          case "street_number": {
+            setPlace((place) => {
+              return { ...place, street_number: component.long_name };
+            });
+            break;
+          }
+          case "route": {
+            setPlace((place) => {
+              return { ...place, route: component.long_name };
+            });
+            break;
+          }
+          case "sublocality_level_1": {
+            setPlace((place) => {
+              return { ...place, sublocality_level_1: component.long_name };
+            });
+            break;
+          }
+          case "locality": {
+            setPlace((place) => {
+              return { ...place, locality: component.long_name };
+            });
+            break;
+          }
+          case "administrative_area_level_2": {
+            setPlace((place) => {
+              return {
+                ...place,
+                administrative_area_level_2: component.long_name,
+              };
+            });
+            break;
+          }
+          case "administrative_area_level_1": {
+            setPlace((place) => {
+              return {
+                ...place,
+                administrative_area_level_1: component.long_name,
+              };
+            });
+            break;
+          }
+          case "country": {
+            setPlace((place) => {
+              return { ...place, country: component.long_name };
+            });
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  let autocomplete;
+  useEffect(function () {
+    /* eslint-disable */
+    const center = { lat: -34.60809, lng: -58.430423 };
+    const defaultBounds = {
+      north: center.lat + 0.1,
+      south: center.lat - 0.1,
+      east: center.lng + 0.1,
+      west: center.lng - 0.1,
+    };
+    const input = document.getElementById("pac-input");
+    const options = {
+      bounds: defaultBounds,
+      componentRestrictions: { country: "ar" },
+      fields: ["address_components", "geometry", "icon", "name"],
+      strictBounds: true,
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.addListener("place_changed", placeChanged);
+  }, []);
 
   // assemble the order
   function handleSendOrder(fullName, address) {
@@ -59,6 +145,19 @@ function Order() {
 
   // handle form submission
   function onSubmit(data) {
+    // minimum requirements
+    if (
+      !place.route ||
+      !place.street_number ||
+      !place.sublocality_level_1 ||
+      !place.locality
+    ) {
+      setPlaceError("Invalid address");
+      return;
+    }
+
+    // data.address = JSON.stringify(place);
+    data.address = `${place.route} ${place.street_number}, ${place.sublocality_level_1}, ${place.locality}`;
     handleSendOrder(data.name, data.address);
   }
 
@@ -102,16 +201,16 @@ function Order() {
                 name="name"
                 type="text"
                 {...register("name", {
-                  required: "this field is required",
+                  required: "This field is required",
                   minLength: {
                     value: 3,
-                    message: "must be at least 3 characters long",
+                    message: "Must be at least 3 characters long",
                   },
                 })}
               ></input>
             </div>
             {errors?.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
-            <div className="flex justify-between gap-4 items-center relative">
+            {/* <div className="flex justify-between gap-4 items-center relative">
               <label htmlFor="Address">Address</label>
               <input
                 className="input"
@@ -129,7 +228,12 @@ function Order() {
             </div>
             {errors?.address && (
               <ErrorMessage>{errors.address.message}</ErrorMessage>
-            )}
+            )} */}
+            <div className="flex justify-between gap-4 items-center relative w-96">
+              <label htmlFor="Address">Address</label>
+              <input className="input" type="text" id="pac-input"></input>
+            </div>
+            {placeError !== "" && <ErrorMessage>{placeError}</ErrorMessage>}
             <button className="bg-yellow-300 mt-8 py-4 hover:bg-yellow-500 transition">
               Order now!
             </button>

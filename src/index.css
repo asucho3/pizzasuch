@@ -7,7 +7,7 @@
     @apply flex flex-col justify-center w-48 h-fit filter hover:outline-dotted hover:outline-2 hover:outline-offset-2 cursor-pointer px-4 pb-5;
   }
   .input {
-    @apply px-2 py-1 focus:outline-dotted outline-2 outline-offset-2 transition-transform focus:scale-105;
+    @apply px-2 py-1 focus:outline-dotted outline-2 outline-offset-2 transition-transform focus:scale-105 w-64;
   }
   .main {
     @apply bg-stone-200 flex flex-col pt-8 pb-14 items-center flex-grow;
