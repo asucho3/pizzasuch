@@ -231,7 +231,12 @@ function Order() {
             )} */}
             <div className="flex justify-between gap-4 items-center relative w-96">
               <label htmlFor="Address">Address</label>
-              <input className="input" type="text" id="pac-input"></input>
+              <input
+                className="input"
+                type="text"
+                id="pac-input"
+                onChange={() => setPlace({})}
+              ></input>
             </div>
             {placeError !== "" && <ErrorMessage>{placeError}</ErrorMessage>}
             <button className="bg-yellow-300 mt-8 py-4 hover:bg-yellow-500 transition">
