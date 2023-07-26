@@ -18,10 +18,12 @@ function Home() {
     navigate("/menu");
   }
   return (
-    <main className="bg-stone-200 h-screen flex flex-col pt-48 items-center">
+    <main className="bg-stone-200 h-screen flex flex-col pt-24 items-center">
       <Logo extraStyles="scale-150 text-4xl mb-12 outline-amber-700 animate-bounce" />
-      <h1 className="text-4xl">Make your very own pizza</h1>
-      <h2 className="text-xl py-4">Enter your name and start now!</h2>
+      <h1 className="text-4xl max-sm:text-xl">Make your very own pizza</h1>
+      <h2 className="text-xl py-4 max-sm:text-lg">
+        Enter your name and start now!
+      </h2>
       <form onSubmit={handleSubmit} className="flex flex-col">
         <input
           className="text-md px-2 py-1 focus:outline-dotted outline-2 outline-offset-2 transition-transform focus:scale-105"

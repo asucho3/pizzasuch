@@ -24,8 +24,8 @@ function Header() {
   };
 
   return (
-    <nav className="bg-yellow-500 flex justify-between py-2 px-12">
-      <ul className="flex gap-8">
+    <nav className="bg-yellow-500 flex justify-between py-2 px-12 max-sm:px-6 max-sm:text-sm max-sm:justify-end">
+      <ul className="flex gap-6 max-sm:gap-0 max-sm:hidden">
         <li>
           <Logo />
         </li>

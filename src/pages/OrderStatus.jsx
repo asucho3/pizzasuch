@@ -33,11 +33,11 @@ function OrderStatus() {
         <Loader />
       ) : (
         <main className="main">
-          <div className="flex flex-col gap-4 py-8">
+          <div className="flex flex-col gap-4 py-8 max-sm:space-y-4">
             <h1 className="font-semibold">
               Order by {orderCustomer} created on {formatDate(orderCreatedAt)}
             </h1>
-            <ul>
+            <ul className="max-sm:flex max-sm:flex-col max-sm:gap-4">
               {orderProducts?.map((product, i) => {
                 return (
                   <li key={i} className="flex flex-col">

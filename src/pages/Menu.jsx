@@ -124,7 +124,7 @@ function Menu() {
               Choose a predefined pizza
             </li>
           </ul>
-          <div className="flex w-3/4 justify-center">
+          <div className="flex w-3/4 justify-center max-sm:w-full">
             <ul className="flex flex-wrap mt-4 mx-auto w-full justify-center">
               {selection === "custom" && (
                 <IngredientList handleClickIngredient={handleClickIngredient} />

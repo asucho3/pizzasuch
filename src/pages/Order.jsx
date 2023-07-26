@@ -166,8 +166,8 @@ function Order() {
       {isLoading ? (
         <Loader />
       ) : (
-        <main className="main">
-          <div className="flex flex-col gap-4 py-8">
+        <main className="main max-sm:flex max-sm:flex-col max-sm:justify-around">
+          <div className="flex flex-col gap-4 py-8 max-sm:py-8">
             <h1>Your cart:</h1>
             <ul className="flex flex-col gap-2">
               {/* loop through the cart array and calculate the totals for each "row" */}
@@ -193,7 +193,7 @@ function Order() {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4 justify-center w-1/8"
           >
-            <div className="flex justify-between gap-4 items-center relative">
+            <div className="flex justify-between gap-4 items-center relative max-sm:w-screen max-sm:px-2">
               <label htmlFor="name">Full name</label>
               <input
                 className="input "
@@ -229,7 +229,7 @@ function Order() {
             {errors?.address && (
               <ErrorMessage>{errors.address.message}</ErrorMessage>
             )} */}
-            <div className="flex justify-between gap-4 items-center relative w-96">
+            <div className="flex justify-between gap-4 items-center relative w-96 max-sm:w-screen max-sm:px-2">
               <label htmlFor="Address">Address</label>
               <input
                 className="input"

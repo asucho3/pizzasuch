@@ -7,16 +7,19 @@ function Ingredient({ type, children, handleClickIngredient, price }) {
     <>
       <div className="flex flex-col fadeIn">
         <li
-          className="px-4 pb-4 hover:scale-105 transition"
+          className="px-4 pb-4 hover:scale-105 transition max-sm:px-1 max-sm:pb-1 max-sm:hover:scale-100"
           onClick={() => handleClickIngredient(type)}
         >
           <div
-            className={`menuItem ${
+            className={`menuItem max-sm:px-1 max-sm:pb-2 max-sm:w-24 ${
               selectedIngredients.includes(type) ? "selected" : ""
             }`}
           >
-            <h4 className="flex justify-between ">
-              <span>{children}</span> <span>${price}</span>
+            <h4 className="flex justify-between max-sm:items-center max-sm:flex-col">
+              <span className="max-sm:text-xs max-sm:font-extrabold">
+                {children}
+              </span>{" "}
+              <span className="max-sm:text-xs">${price}</span>
             </h4>
             <img
               src={`/img/ingredient.jpg`}
