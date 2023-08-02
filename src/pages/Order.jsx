@@ -37,7 +37,6 @@ function Order() {
     setPlaceError("");
     if (autocomplete?.getPlace()) {
       for (const component of autocomplete.getPlace().address_components) {
-        console.log(component);
         switch (component.types[0]) {
           case "street_number": {
             setPlace((place) => {

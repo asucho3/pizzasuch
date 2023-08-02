@@ -13,8 +13,13 @@
   <script src="https://sdk.mercadopago.com/js/v2">
   </script>
   <!-- Places API -->
+  <script>
+    window.doneLoading = function () {
+      console.log('Places API loaded successfully')
+    };
+  </script>
   <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiJT7v6MpLg-Zo67Xr6lSTqUFPzNFLHYE&libraries=places">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiJT7v6MpLg-Zo67Xr6lSTqUFPzNFLHYE&libraries=places&callback=doneLoading">
     </script>
   <title>pizzaSuch</title>
 </head>
