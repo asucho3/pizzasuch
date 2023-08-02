@@ -35,6 +35,7 @@ function OrderPay() {
            "amount" es el monto total a pagar por todos los medios de pago con excepción de la Cuenta de Mercado Pago y Cuotas sin tarjeta de crédito, las cuales tienen su valor de procesamiento determinado en el backend a través del "preferenceId"
           */
           amount: totalPrice,
+          transaction_amount: totalPrice,
         },
         customization: {
           paymentMethods: {
