@@ -5,6 +5,7 @@ import { createOrder, getProducts } from "../services/apiCalls";
 import { toast } from "react-hot-toast";
 import Loader from "../ui/Loader";
 import { useNavigate } from "react-router-dom";
+import { MP_API_KEY } from "../../config";
 
 function OrderPay() {
   const order = useSelector((state) => state.order);
@@ -24,7 +25,7 @@ function OrderPay() {
   // show MercadoPago
   useEffect(function () {
     /* eslint-disable */
-    const mp = new MercadoPago("TEST-7a71a440-d924-48ea-a622-a391b247039f", {
+    const mp = new MercadoPago(MP_API_KEY, {
       locale: "es-AR",
     });
     const bricksBuilder = mp.bricks();
