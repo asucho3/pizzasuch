@@ -4,11 +4,9 @@
 
 pizzaSuch is a fake pizza ordering app
 
-## Choose among a wide variety of ingredients
-
-## Create your own pizza
-
-## Not feeling creative? Just pick one of the standard pizzas, they're all great!
+- Choose among a wide variety of ingredients
+- Create your own pizza
+- Not feeling creative? Just pick one of the standard pizzas, they're all great!
 
 # Technologies used
 
