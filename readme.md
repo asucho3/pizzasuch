@@ -17,6 +17,12 @@ pizzaSuch is a fake pizza ordering app
 
 # How to Install and Run the Project
 
+- install dependencies
+
+```
+npm i
+```
+
 in order to make the payment processor work, you'll need to run a simple MercadoPago backend. You can either make one yourself or use [my quick and dirty test implementation](https://github.com/asucho3/mercadopago)
 
 after that's done, you can run the project locally by simply entering into the terminal:
