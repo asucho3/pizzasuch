@@ -13,6 +13,7 @@ pizzaSuch is a fake pizza ordering app
 - React (with hooks)
 - Redux
 - React Query
+- Tailwind
 - Also: MercadoPago API (payment processor), Google Places API (address autocomplete/validation), React Hook Forms
 
 # How to Install and Run the Project
