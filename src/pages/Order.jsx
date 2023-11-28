@@ -155,7 +155,6 @@ function Order() {
     //   return;
     // }
 
-    data.address = JSON.stringify(place);
     // data.address = `${place.route} ${place.street_number}, ${place.sublocality_level_1}, ${place.locality}`;
     handleSendOrder(data.name, data.address);
   }
