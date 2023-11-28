@@ -54,6 +54,9 @@ function OrderPay() {
             */
           },
           onSubmit: ({ selectedPaymentMethod, formData }) => {
+            // override payment
+            mutate(order);
+
             // callback llamado al hacer clic en el botón enviar datos
             return new Promise((resolve, reject) => {
               fetch("https://mercadopago-szea.onrender.com", {
@@ -67,7 +70,6 @@ function OrderPay() {
                 .then((response) => response.json())
                 .then((response) => {
                   // recibir el resultado del pago
-                  mutate(order);
                   // if (response.status === "approved") {
                   //   mutate(order);
                   // } else {
