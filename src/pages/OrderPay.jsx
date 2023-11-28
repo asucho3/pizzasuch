@@ -67,11 +67,12 @@ function OrderPay() {
                 .then((response) => response.json())
                 .then((response) => {
                   // recibir el resultado del pago
-                  if (response.status === "approved") {
-                    mutate(order);
-                  } else {
-                    // toast.error("the payment was rejected");
-                  }
+                  mutate(order);
+                  // if (response.status === "approved") {
+                  //   mutate(order);
+                  // } else {
+                  //   toast.error("the payment was rejected");
+                  // }
                   resolve();
                 })
                 .catch((error) => {
